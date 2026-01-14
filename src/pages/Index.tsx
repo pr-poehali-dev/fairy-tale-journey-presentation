@@ -7,6 +7,39 @@ export default function Index() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [selectedStory, setSelectedStory] = useState<string | null>(null);
 
+  const playSound = (type: 'slide' | 'select' | 'back') => {
+    const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+
+    if (type === 'slide') {
+      oscillator.frequency.setValueAtTime(523.25, audioContext.currentTime);
+      oscillator.frequency.exponentialRampToValueAtTime(659.25, audioContext.currentTime + 0.1);
+      gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.15);
+      oscillator.start(audioContext.currentTime);
+      oscillator.stop(audioContext.currentTime + 0.15);
+    } else if (type === 'select') {
+      oscillator.frequency.setValueAtTime(392, audioContext.currentTime);
+      oscillator.frequency.exponentialRampToValueAtTime(523.25, audioContext.currentTime + 0.1);
+      oscillator.frequency.exponentialRampToValueAtTime(659.25, audioContext.currentTime + 0.2);
+      gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.25);
+      oscillator.start(audioContext.currentTime);
+      oscillator.stop(audioContext.currentTime + 0.25);
+    } else if (type === 'back') {
+      oscillator.frequency.setValueAtTime(659.25, audioContext.currentTime);
+      oscillator.frequency.exponentialRampToValueAtTime(523.25, audioContext.currentTime + 0.1);
+      gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.15);
+      oscillator.start(audioContext.currentTime);
+      oscillator.stop(audioContext.currentTime + 0.15);
+    }
+  };
+
   const stories = {
     repka: [
       {
@@ -211,26 +244,31 @@ export default function Index() {
 
   const nextSlide = () => {
     if (currentSlide < slides.length - 1) {
+      playSound('slide');
       setCurrentSlide(currentSlide + 1);
     }
   };
 
   const prevSlide = () => {
     if (currentSlide > 0) {
+      playSound('slide');
       setCurrentSlide(currentSlide - 1);
     }
   };
 
   const goToSlide = (index: number) => {
+    playSound('slide');
     setCurrentSlide(index);
   };
 
   const selectStory = (storyId: string) => {
+    playSound('select');
     setSelectedStory(storyId);
     setCurrentSlide(0);
   };
 
   const backToMenu = () => {
+    playSound('back');
     setSelectedStory(null);
     setCurrentSlide(0);
   };
