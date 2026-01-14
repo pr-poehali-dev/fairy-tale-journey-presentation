@@ -301,6 +301,7 @@ export default function Index() {
                   <p className="text-lg text-purple-500">Выполнила воспитатель</p>
                   <p className="text-xl font-semibold text-purple-600">МБДОУ города Иркутска детский сад № 180</p>
                   <p className="text-2xl font-bold text-pink-600">Лаврецкая Светлана Николаевна</p>
+                  <p className="text-3xl font-bold text-purple-700 mt-6">2024 год</p>
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-6 mt-12">
