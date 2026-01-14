@@ -293,9 +293,15 @@ export default function Index() {
                 <h1 className="text-6xl md:text-7xl font-bold text-purple-600 mb-4 font-caveat">
                   Путешествие по сказкам
                 </h1>
-                <p className="text-2xl text-purple-400 mb-12">
+                <p className="text-2xl text-purple-400 mb-4">
                   Открытое занятие во второй младшей группе
                 </p>
+                
+                <div className="mt-8 space-y-2">
+                  <p className="text-lg text-purple-500">Выполнила воспитатель</p>
+                  <p className="text-xl font-semibold text-purple-600">МБДОУ города Иркутска детский сад № 180</p>
+                  <p className="text-2xl font-bold text-pink-600">Лаврецкая Светлана Николаевна</p>
+                </div>
 
                 <div className="grid md:grid-cols-3 gap-6 mt-12">
                   {storyMenu.map((story, index) => (
