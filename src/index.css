@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Rubik:wght@300;400;500;600;700&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -97,5 +99,72 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: "Rubik", sans-serif;
+  }
+}
+
+@layer utilities {
+  .cloud {
+    position: absolute;
+    font-size: 3rem;
+    opacity: 0.6;
+    animation: float 4s ease-in-out infinite;
+  }
+
+  .cloud-1 {
+    top: 10%;
+    left: 5%;
+    animation-delay: 0s;
+  }
+
+  .cloud-2 {
+    top: 20%;
+    right: 10%;
+    animation-delay: 1s;
+  }
+
+  .cloud-3 {
+    top: 60%;
+    left: 8%;
+    animation-delay: 2s;
+  }
+
+  .star {
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0.8;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .star-1 {
+    top: 15%;
+    right: 20%;
+    animation-delay: 0.5s;
+  }
+
+  .star-2 {
+    top: 50%;
+    right: 5%;
+    animation-delay: 1.5s;
+  }
+
+  .star-3 {
+    top: 70%;
+    left: 15%;
+    animation-delay: 2.5s;
+  }
+
+  .star-4 {
+    top: 30%;
+    left: 20%;
+    animation-delay: 3s;
+  }
+
+  .hover-scale {
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.05);
   }
 }
